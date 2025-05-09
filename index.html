@@ -7,15 +7,17 @@
 	<meta name="description"
 		content="Thiago Silva - Desenvolvedor de Software com expertise em soluções web modernas. Veja minhas experiências, projetos e competências." />
 	<title>Thiago Silva - Desenvolvedor de Software</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
 	<style>
 		:root {
-			--primary: #007bff;
-			--accent: #6e8efb;
-			--background: #f4f4f4;
-			--text: #333;
-			--card-bg: #fff;
+			--primary: #4CAF50;
+			--accent: #FF9800;
+			--background: #F5F5F5;
+			--text: #212121;
+			--card-bg: #FFFFFF;
 			--shadow: rgba(0, 0, 0, 0.1);
-			--radius: 8px;
+			--radius: 10px;
+			--transition: 0.3s ease-in-out;
 		}
 
 		*,
@@ -27,27 +29,32 @@
 		}
 
 		body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-family: 'Roboto', sans-serif;
 			line-height: 1.6;
 			background-color: var(--background);
 			color: var(--text);
+			margin: 0;
 		}
 
 		a {
 			color: var(--primary);
 			text-decoration: none;
+			transition: color var(--transition);
 		}
 
 		a:hover {
-			text-decoration: underline;
+			color: var(--accent);
 		}
 
 		header {
-			background: linear-gradient(135deg, var(--accent), #a777e3);
+			background: linear-gradient(135deg, var(--primary), var(--accent));
 			color: #fff;
 			padding: 2rem 1rem;
 			text-align: center;
 			box-shadow: 0 4px 6px var(--shadow);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
 		}
 
 		.header-content {
@@ -67,12 +74,19 @@
 			padding: 1.5rem;
 			border-radius: var(--radius);
 			box-shadow: 0 2px 4px var(--shadow);
+			transition: transform var(--transition), box-shadow var(--transition);
+		}
+
+		section:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 4px 8px var(--shadow);
 		}
 
 		h2 {
 			border-bottom: 2px solid var(--primary);
 			margin-bottom: 1rem;
 			padding-bottom: 0.5rem;
+			font-family: 'Roboto Slab', serif;
 		}
 
 		.job,
@@ -106,6 +120,26 @@
 			color: #fff;
 			text-align: center;
 			padding: 1rem;
+			position: relative;
+		}
+
+		.scroll-to-top {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background: var(--primary);
+			color: #fff;
+			border: none;
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+			box-shadow: 0 2px 4px var(--shadow);
+			transition: background var(--transition);
+		}
+
+		.scroll-to-top:hover {
+			background: var(--accent);
 		}
 	</style>
 </head>
@@ -204,6 +238,28 @@
 	<footer>
 		&copy; 2025 Thiago Silva — Desenvolvedor de Software
 	</footer>
+
+	<button class="scroll-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+
+	<script>
+		// Add animations to sections on scroll
+		const sections = document.querySelectorAll('section');
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.style.opacity = 1;
+					entry.target.style.transform = 'translateY(0)';
+				}
+			});
+		}, { threshold: 0.1 });
+
+		sections.forEach(section => {
+			section.style.opacity = 0;
+			section.style.transform = 'translateY(20px)';
+			section.style.transition = 'opacity var(--transition), transform var(--transition)';
+			observer.observe(section);
+		});
+	</script>
 
 </body>
 

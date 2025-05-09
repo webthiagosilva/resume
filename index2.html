@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description"
+		content="Thiago Silva - Desenvolvedor de Software com expertise em soluções web modernas. Veja minhas experiências, projetos e competências." />
+	<title>Thiago Silva - Desenvolvedor de Software</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<style>
+		:root {
+			--primary: #2563eb;
+			--primary-dark: #1d4ed8;
+			--secondary: #f59e0b;
+			--secondary-light: #fbbf24;
+			--background: #f8fafc;
+			--text: #1e293b;
+			--card-bg: #ffffff;
+			--shadow: rgba(0, 0, 0, 0.12);
+			--radius: 0.75rem;
+			--transition: 0.3s ease-in-out;
+		}
+
+		.dark-theme {
+			--primary: #3b82f6;
+			--primary-dark: #2563eb;
+			--secondary: #f59e0b;
+			--secondary-light: #fbbf24;
+			--background: #0f172a;
+			--text: #e2e8f0;
+			--card-bg: #1e293b;
+			--shadow: rgba(0, 0, 0, 0.25);
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Poppins', sans-serif;
+			line-height: 1.6;
+			background-color: var(--background);
+			color: var(--text);
+			margin: 0;
+			transition: background-color var(--transition), color var(--transition);
+		}
+
+		a {
+			color: var(--primary);
+			text-decoration: none;
+			transition: color var(--transition), transform var(--transition);
+			display: inline-block;
+		}
+
+		a:hover {
+			color: var(--secondary);
+			transform: translateY(-2px);
+		}
+
+		header {
+			background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+			color: #fff;
+			padding: 3rem 1rem 2rem;
+			text-align: center;
+			box-shadow: 0 4px 6px var(--shadow);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.header-content {
+			max-width: 800px;
+			margin: auto;
+			position: relative;
+			z-index: 2;
+		}
+
+		.header-bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffffff" fill-opacity="0.07" d="M0,64L48,96C96,128,192,192,288,186.7C384,181,480,107,576,112C672,117,768,203,864,208C960,213,1056,139,1152,117.3C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+			background-size: cover;
+			background-position: center bottom;
+			z-index: 1;
+		}
+
+		.theme-toggle {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			background: transparent;
+			border: none;
+			color: white;
+			font-size: 1.2rem;
+			cursor: pointer;
+			z-index: 5;
+			padding: 0.5rem;
+			border-radius: 50%;
+			transition: background-color var(--transition);
+		}
+
+		.theme-toggle:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+
+		main {
+			max-width: 900px;
+			margin: 2rem auto;
+			padding: 0 1rem;
+		}
+
+		h1 {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 2.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		h2 {
+			font-family: 'Montserrat', sans-serif;
+			color: var(--primary);
+			position: relative;
+			margin-bottom: 1.5rem;
+			padding-bottom: 0.75rem;
+		}
+
+		h2::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 3px;
+			background: linear-gradient(to right, var(--primary), var(--secondary));
+			border-radius: 3px;
+		}
+
+		section {
+			background: var(--card-bg);
+			margin-bottom: 2rem;
+			padding: 2rem;
+			border-radius: var(--radius);
+			box-shadow: 0 10px 15px -3px var(--shadow);
+			transition: transform var(--transition), box-shadow var(--transition);
+		}
+
+		.section-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 1rem;
+		}
+
+		.section-icon {
+			color: var(--secondary);
+			font-size: 1.5rem;
+		}
+
+		.job,
+		.school,
+		.course,
+		.language {
+			margin-bottom: 1.5rem;
+			padding-left: 1rem;
+			border-left: 3px solid var(--primary);
+			padding-bottom: 0.5rem;
+		}
+
+		.job:last-child,
+		.school:last-child,
+		.course:last-child,
+		.language:last-child {
+			margin-bottom: 0;
+		}
+
+		h3 {
+			color: var(--primary);
+			font-size: 1.2rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.job-duration,
+		.education-duration {
+			font-style: italic;
+			color: #666;
+			font-size: 0.9rem;
+			display: flex;
+			align-items: center;
+			margin-bottom: 0.5rem;
+		}
+
+		.job-duration i,
+		.education-duration i {
+			margin-right: 0.5rem;
+			color: var(--secondary);
+		}
+
+		ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		ul li {
+			margin-bottom: 0.5rem;
+			padding-left: 1.5rem;
+			position: relative;
+		}
+
+		ul li::before {
+			content: "→";
+			color: var(--secondary);
+			position: absolute;
+			left: 0;
+		}
+
+		/* Project cards with hover effect */
+		.projects-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.5rem;
+		}
+
+		.project {
+			margin-bottom: 0;
+			padding: 1.5rem;
+			border-radius: var(--radius);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			transition: transform var(--transition), box-shadow var(--transition);
+			position: relative;
+			overflow: hidden;
+			height: 100%;
+		}
+
+		.project::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 4px;
+			height: 100%;
+			background: linear-gradient(to bottom, var(--primary), var(--secondary));
+			transition: width var(--transition);
+		}
+
+		.project:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px -5px var(--shadow);
+		}
+
+		.project:hover::before {
+			width: 100%;
+			opacity: 0.1;
+		}
+
+		/* Skill bars */
+		.skills-container {
+			margin-top: 1.5rem;
+		}
+
+		.skill-item {
+			margin-bottom: 1.5rem;
+		}
+
+		.skill-name {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.5rem;
+		}
+
+		.skill-bar {
+			height: 10px;
+			background-color: rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			overflow: hidden;
+		}
+
+		.skill-progress {
+			height: 100%;
+			background: linear-gradient(to right, var(--primary), var(--secondary));
+			border-radius: 5px;
+			width: 0;
+			transition: width 1.5s ease-in-out;
+		}
+
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 1rem;
+			margin-top: 1.5rem;
+		}
+
+		.skill-tag {
+			background-color: rgba(37, 99, 235, 0.1);
+			color: var(--primary);
+			padding: 0.5rem 1rem;
+			border-radius: 20px;
+			display: inline-flex;
+			align-items: center;
+			margin-right: 0.5rem;
+			margin-bottom: 0.5rem;
+			transition: background-color var(--transition), transform var(--transition);
+		}
+
+		.skill-tag:hover {
+			background-color: rgba(37, 99, 235, 0.2);
+			transform: translateY(-2px);
+		}
+
+		.skill-tag i {
+			margin-right: 0.5rem;
+		}
+
+		footer {
+			background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+			color: #fff;
+			text-align: center;
+			padding: 1.5rem;
+			position: relative;
+		}
+
+		.contact-links {
+			display: flex;
+			justify-content: center;
+			gap: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.contact-links a {
+			color: #fff;
+			font-size: 1.2rem;
+			transition: transform var(--transition);
+		}
+
+		.contact-links a:hover {
+			transform: scale(1.2);
+		}
+
+		.scroll-to-top {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background: var(--primary);
+			color: #fff;
+			border: none;
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+			box-shadow: 0 4px 10px var(--shadow);
+			transition: background-color var(--transition), transform var(--transition);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.2rem;
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.scroll-to-top.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.scroll-to-top:hover {
+			background: var(--secondary);
+			transform: translateY(-5px);
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.projects-grid {
+				grid-template-columns: 1fr;
+			}
+
+			h1 {
+				font-size: 2rem;
+			}
+
+			section {
+				padding: 1.5rem;
+			}
+		}
+
+		/* Subtle animation for page load */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		main section {
+			animation: fadeIn 0.8s ease-out forwards;
+			opacity: 0;
+		}
+
+		main section:nth-child(1) {
+			animation-delay: 0.2s;
+		}
+
+		main section:nth-child(2) {
+			animation-delay: 0.4s;
+		}
+
+		main section:nth-child(3) {
+			animation-delay: 0.6s;
+		}
+
+		main section:nth-child(4) {
+			animation-delay: 0.8s;
+		}
+
+		main section:nth-child(5) {
+			animation-delay: 1s;
+		}
+
+		main section:nth-child(6) {
+			animation-delay: 1.2s;
+		}
+	</style>
+</head>
+
+<body>
+	<button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema escuro/claro">
+		<i class="fas fa-moon"></i>
+	</button>
+
+	<header>
+		<div class="header-bg"></div>
+		<div class="header-content">
+			<h1>Thiago Silva</h1>
+			<p>Analista e Desenvolvedor de Software | Especialista em Web</p>
+			<div class="contact-info">
+				<address>
+					<i class="fas fa-map-marker-alt"></i> Maringá/PR<br>
+					<i class="fas fa-phone"></i> (44) 99999-9999 | <a href="mailto:webthiagosilva@gmail.com"><i class="fas fa-envelope"></i> webthiagosilva@gmail.com</a><br>
+					<div class="social-links">
+						<a href="https://linkedin.com/in/webthiagosilva" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a> |
+						<a href="https://github.com/webthiagosilva" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
+					</div>
+				</address>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="experience">
+			<div class="section-header">
+				<h2>Experiência</h2>
+				<div class="section-icon"><i class="fas fa-briefcase"></i></div>
+			</div>
+			<div class="job">
+				<h3>NerdMonster Digital — Desenvolvedor Web Fullstack</h3>
+				<p class="job-duration"><i class="far fa-calendar-alt"></i> Fev 2023 – Dez 2023</p>
+				<ul>
+					<li>Desenvolvimento e manutenção de aplicações web modernas utilizando Laravel e Vue.js.</li>
+					<li>Integração de APIs RESTful e otimização de queries SQL.</li>
+					<li>Participação em sprints ágeis e code reviews colaborativos.</li>
+				</ul>
+			</div>
+			<div class="job">
+				<h3>Agência TechNova — Estágio em Desenvolvimento</h3>
+				<p class="job-duration"><i class="far fa-calendar-alt"></i> Mar 2022 – Jan 2023</p>
+				<ul>
+					<li>Criação de landing pages otimizadas para SEO e performance.</li>
+					<li>Auxílio na modelagem de banco de dados relacional.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="education">
+			<div class="section-header">
+				<h2>Formação</h2>
+				<div class="section-icon"><i class="fas fa-graduation-cap"></i></div>
+			</div>
+			<div class="school">
+				<h3>Centro Universitário Integrado — Tecnólogo em ADS</h3>
+				<p class="education-duration"><i class="far fa-calendar-alt"></i> 2020 – 2023</p>
+				<p class="degree">Projeto final focado em automação de processos de negócios com Laravel.</p>
+			</div>
+		</section>
+
+		<section class="projects">
+			<div class="section-header">
+				<h2>Projetos</h2>
+				<div class="section-icon"><i class="fas fa-code-branch"></i></div>
+			</div>
+			<div class="projects-grid">
+				<div class="project">
+					<h3><i class="fas fa-chart-line"></i> Sistema de Gestão de Riscos</h3>
+					<p>Aplicação web para gerenciamento de operações em commodities, com cálculo de exposição cambial e
+						interface interativa para relatórios.</p>
+				</div>
+				<div class="project">
+					<h3><i class="fas fa-robot"></i> Bot de Coleta de Dados</h3>
+					<p>Desenvolvimento de web scraper modular em PHP para análise de preços de mercado.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="courses">
+			<div class="section-header">
+				<h2>Outros Cursos</h2>
+				<div class="section-icon"><i class="fas fa-book"></i></div>
+			</div>
+			<div class="course">
+				<h3>Arquitetura Limpa e DDD — Alura</h3>
+				<p class="education-duration"><i class="far fa-calendar-alt"></i> 2024</p>
+			</div>
+			<div class="course">
+				<h3>Desenvolvimento Web com Laravel e Vue.js — Udemy</h3>
+				<p class="education-duration"><i class="far fa-calendar-alt"></i> 2023</p>
+			</div>
+		</section>
+
+		<section class="skills">
+			<div class="section-header">
+				<h2>Competências</h2>
+				<div class="section-icon"><i class="fas fa-cogs"></i></div>
+			</div>
+
+			<div class="skills-container">
+				<div class="skill-item">
+					<div class="skill-name">
+						<span>PHP + Laravel</span>
+						<span>90%</span>
+					</div>
+					<div class="skill-bar">
+						<div class="skill-progress" data-width="90%"></div>
+					</div>
+				</div>
+				<div class="skill-item">
+					<div class="skill-name">
+						<span>JavaScript + Vue.js</span>
+						<span>85%</span>
+					</div>
+					<div class="skill-bar">
+						<div class="skill-progress" data-width="85%"></div>
+					</div>
+				</div>
+				<div class="skill-item">
+					<div class="skill-name">
+						<span>MySQL + PostgreSQL</span>
+						<span>80%</span>
+					</div>
+					<div class="skill-bar">
+						<div class="skill-progress" data-width="80%"></div>
+					</div>
+				</div>
+				<div class="skill-item">
+					<div class="skill-name">
+						<span>Docker + CI/CD</span>
+						<span>75%</span>
+					</div>
+					<div class="skill-bar">
+						<div class="skill-progress" data-width="75%"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="skills-grid">
+				<span class="skill-tag"><i class="fab fa-php"></i> PHP</span>
+				<span class="skill-tag"><i class="fab fa-laravel"></i> Laravel</span>
+				<span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+				<span class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</span>
+				<span class="skill-tag"><i class="fas fa-database"></i> MySQL</span>
+				<span class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</span>
+				<span class="skill-tag"><i class="fas fa-server"></i> Redis</span>
+				<span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
+				<span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+				<span class="skill-tag"><i class="fas fa-code-branch"></i> CI/CD</span>
+				<span class="skill-tag"><i class="fas fa-code"></i> SOLID</span>
+				<span class="skill-tag"><i class="fas fa-vial"></i> TDD</span>
+				<span class="skill-tag"><i class="fas fa-align-left"></i> Clean Code</span>
+				<span class="skill-tag"><i class="fas fa-tasks"></i> Scrum</span>
+				<span class="skill-tag"><i class="fas fa-clipboard-list"></i> Kanban</span>
+			</div>
+		</section>
+
+		<section class="languages">
+			<div class="section-header">
+				<h2>Idiomas</h2>
+				<div class="section-icon"><i class="fas fa-language"></i></div>
+			</div>
+			<div class="language">
+				<h3><i class="fas fa-flag"></i> Português</h3>
+				<div class="skill-bar">
+					<div class="skill-progress" data-width="100%"></div>
+				</div>
+				<p>Nativo</p>
+			</div>
+			<div class="language">
+				<h3><i class="fas fa-flag"></i> Inglês</h3>
+				<div class="skill-bar">
+					<div class="skill-progress" data-width="60%"></div>
+				</div>
+				<p>Intermediário (leitura técnica, escrita básica)</p>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="contact-links">
+			<a href="mailto:webthiagosilva@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+			<a href="https://linkedin.com/in/webthiagosilva" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+			<a href="https://github.com/webthiagosilva" aria-label="GitHub"><i class="fab fa-github"></i></a>
+		</div>
+		<p>&copy; 2025 Thiago Silva — Desenvolvedor de Software</p>
+	</footer>
+
+	<button class="scroll-to-top" id="scroll-to-top" aria-label="Voltar ao topo">
+		<i class="fas fa-arrow-up"></i>
+	</button>
+
+	<script>
+		// Initialize skill bars animation
+		function animateSkillBars() {
+			const skillBars = document.querySelectorAll('.skill-progress');
+			skillBars.forEach(bar => {
+				const width = bar.getAttribute('data-width');
+				bar.style.width = width;
+			});
+		}
+
+		// Theme toggle functionality
+		const themeToggle = document.getElementById('theme-toggle');
+		const themeIcon = themeToggle.querySelector('i');
+
+		themeToggle.addEventListener('click', () => {
+			document.body.classList.toggle('dark-theme');
+
+			if (document.body.classList.contains('dark-theme')) {
+				themeIcon.classList.remove('fa-moon');
+				themeIcon.classList.add('fa-sun');
+				localStorage.setItem('theme', 'dark');
+			} else {
+				themeIcon.classList.remove('fa-sun');
+				themeIcon.classList.add('fa-moon');
+				localStorage.setItem('theme', 'light');
+			}
+		});
+
+		// Check for saved theme preference
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme === 'dark') {
+			document.body.classList.add('dark-theme');
+			themeIcon.classList.remove('fa-moon');
+			themeIcon.classList.add('fa-sun');
+		}
+
+		// Scroll to top button
+		const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+		window.addEventListener('scroll', () => {
+			if (window.pageYOffset > 300) {
+				scrollToTopBtn.classList.add('visible');
+			} else {
+				scrollToTopBtn.classList.remove('visible');
+			}
+		});
+
+		scrollToTopBtn.addEventListener('click', () => {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+
+		// Initialize animations when page loads
+		document.addEventListener('DOMContentLoaded', () => {
+			animateSkillBars();
+		});
+	</script>
+
+</body>
+
+</html>
